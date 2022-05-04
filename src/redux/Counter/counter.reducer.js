@@ -1,34 +1,33 @@
-import { INCREMENT, DECREMENT } from './counter.types';
-
-
+import { ADD_USER, EDIT_USER, UPDATE_USER } from "./counter.types";
 const INITIAL_STATE = {
-
-    count: 0,
+  totalUser: [],
+  user: [],
+  newData: {},
+  id: {},
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
+  switch (action.type) {
+    case ADD_USER:
+      return {
+        ...state,
+        totalUser: state.user.push(action.payload),
+      };
 
-    switch (action.type) {
+    case EDIT_USER:
+      return {
+        ...state,
+        id: action.payload,
+      };
+    case UPDATE_USER:
+      return {
+        ...state,
+        id: action.payload,
+      };
 
-        case INCREMENT:
-
-           return {
-
-             ...state, count: state.count + 1,
-
-           };
-
-        case DECREMENT:
-
-           return {
-              ...state, count: state.count - 1,
-
-           };
-
-         default: return state;
-
-    }
-
+    default:
+      return state;
+  }
 };
 
 export default reducer;

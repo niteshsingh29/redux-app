@@ -1,23 +1,20 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { increaseCounter } from "./redux/Counter/counter.action";
+import Userlist from "./components/Userlist";
+import Adduser from "./components/Adduser";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Edituser from "./components/Edituser";
+
 function App() {
-  const dispatch = useDispatch();
-  const mystate = useSelector((value) => value.counterReducer);
-  console.log(mystate);
   return (
     <>
-      <div className="App">
-        <div>count : {mystate.count}</div>
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<Adduser />}></Route>
+          <Route exact path="/userlist" element={<Userlist />}></Route>
+          <Route exact path="/editUser" element={<Edituser />}></Route>
 
-        <button onClick={() => dispatch(increaseCounter())}>
-          Increase Count +
-        </button>
-
-        <button>Decrease Count -</button>
-      </div>
-
-
+        </Routes>
+      </Router>
     </>
   );
 }

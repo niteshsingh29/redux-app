@@ -1,14 +1,28 @@
-import { INCREMENT, DECREMENT } from "./counter.types";
+import { ADD_USER, EDIT_USER, UPDATE_USER } from "./counter.types";
 
-export const increaseCounter = () => {
+export const addUser = ({ name, email, number }) => {
   return {
-    type: INCREMENT,
+    type: ADD_USER,
+    payload: {
+      name: name,
+      email: email,
+      number: number,
+    },
   };
 };
 
-export const decreaseCounter = () => {
+export const editUser = (index) => {
   return {
-    type: DECREMENT,
+    type: EDIT_USER,
+    payload: {
+      index,
+    },
+  };
+};
+
+export const updateUser = (index) => {
+  return {
+    type: UPDATE_USER,
   };
 };
 
